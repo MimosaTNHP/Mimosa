@@ -28,7 +28,12 @@
       Tại: <strong>Mimosa - 130 Trần Hưng Đạo - Núi Đèo - Thủy Nguyên - TP.Hải Phòng</strong>
     </p>
     <p class="slide-in delay5 note">Sự hiện diện của bạn là niềm vinh hạnh cho gia đình chúng tôi!</p>
-    <a href="https://maps.app.goo.gl/usnEqKZqPmM9PCvt9" target="_blank" class="button slide-in delay6">Chỉ đường</a>
+
+    <!-- Các nút Chỉ đường & Gửi Tiền Mừng -->
+    <div class="slide-in delay6" style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+      <a href="https://maps.app.goo.gl/usnEqKZqPmM9PCvt9" target="_blank" class="button">Chỉ đường</a>
+      <button onclick="showQR()" class="button" style="background-color: #e91e63;">💝 Gửi Tiền Mừng</button>
+    </div>
 
     <!-- Lịch sẽ được tạo tự động -->
     <div class="calendar slide-in delay8" id="calendar-container"></div>
@@ -49,18 +54,38 @@
     </audio>
   </div>
 
+  <!-- POPUP QR CODE -->
+  <div id="qrPopup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.6); z-index:9999; justify-content: center; align-items: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; text-align: center; max-width: 90%; box-shadow: 0 0 20px rgba(0,0,0,0.3);">
+      <h3>Quét mã để gửi tiền mừng</h3>
+      <img src="images/qrcode.jpg" alt="QR Code" style="max-width: 300px; width: 100%; border-radius: 8px; margin: 10px 0;">
+      <br>
+      <button onclick="hideQR()" style="padding: 8px 16px; background: #333; color: white; border: none; border-radius: 5px;">Đóng</button>
+    </div>
+  </div>
+
   <!-- Hiệu ứng trái tim bay -->
   <script>
-  setInterval(() => {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.style.left = Math.random() * window.innerWidth + "px";
-    heart.style.bottom = "-20px";
-    document.body.appendChild(heart);
-    setTimeout(() => {
-      heart.remove();
-    }, 4000);
-  }, 500);
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.style.left = Math.random() * window.innerWidth + "px";
+      heart.style.bottom = "-20px";
+      document.body.appendChild(heart);
+      setTimeout(() => {
+        heart.remove();
+      }, 4000);
+    }, 500);
+  </script>
+
+  <!-- JS cho QR popup -->
+  <script>
+    function showQR() {
+      document.getElementById("qrPopup").style.display = "flex";
+    }
+    function hideQR() {
+      document.getElementById("qrPopup").style.display = "none";
+    }
   </script>
 
   <script src="main.js"></script>
